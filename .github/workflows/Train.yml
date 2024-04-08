@@ -13,7 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Login to Docker Hub
-      run: docker login -u $vichu49x2 -p $dckr_pat_bW_ru8VNuSfuYPeiHuxZyO5Mabs
+      run: docker login -u vichu49x2 -p dckr_pat_bW_ru8VNuSfuYPeiHuxZyO5Mabs
     - name: create image
       run: 
         docker build . -t test:v1
