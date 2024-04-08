@@ -17,10 +17,10 @@ jobs:
     - uses: actions/checkout@v3
     - name: Login to Docker Hub
       run: docker login -u vichu49x2 -p dckr_pat_bW_ru8VNuSfuYPeiHuxZyO5Mabs
-    - name: Get the Docker image
-      run:
-        image tag test:v1 vichu49x2/test:v1
-        docker pull vichu49x2/test:v1
+    - name: Get the Docker image step 1
+      run: image tag test:v1 vichu49x2/test:v1
+    - name: Get the Docker image step 1
+      run: docker pull vichu49x2/test:v1  
     - name: Test model
       run: |
         OUTPUT=$(python test.py)
