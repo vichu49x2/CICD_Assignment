@@ -2,9 +2,9 @@ name: Test
 
 on:
   workflow_run:
-      workflows: ['Train']
-      types: [completed]
-      branches:  [ "main" ]
+    workflows: ["Train"]
+    types:
+      - completed
 
 jobs:
 
