@@ -4,8 +4,7 @@ on:
   workflow_run:
       workflows: ['Train']
       types: [completed]
-      branches:
-          - 'main'
+      branches:  [ "main" ]
 
 jobs:
 
