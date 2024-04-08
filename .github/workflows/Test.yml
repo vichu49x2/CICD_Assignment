@@ -24,3 +24,10 @@ jobs:
       run:
         image tag test:v1 vichu49x2/test:v1
         docker pull vichu49x2/test:v1
+    - name: Test model
+      run: |
+        OUTPUT=$(python test.py)
+        echo "Score:"
+        echo "$OUTPUT"
+        if [[ `echo "$OUTPUT 0.35" | awk '{print ($1 < $2)}'` == 1 ]]; then echo "Insufficient Accuracy" && exit 1; fi
+    
