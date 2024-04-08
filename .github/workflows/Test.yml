@@ -12,5 +12,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+    -
+      name: Login to Docker Hub
+      uses: docker/login-action@v3
+      with:
+        username: ${{ secrets.vichu49x2 }}
+        password: ${{ secrets.dckr_pat_bW_ru8VNuSfuYPeiHuxZyO5Mabs }}
+    - name: Get the Docker image
+      run:
+        image tag test:v1 vichu49x2/test:v1
+        docker pull vichu49x2/test:v1
