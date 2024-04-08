@@ -1,0 +1,21 @@
+name: Docker Image CI
+
+on:
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      run: 
+        docker build . --file Dockerfile --tag test:$(date +%s)
+        docker login
+        docker image tag ./test:v1 vichu49x2/test:v1
+        docker push vichu49x2/test:v1
+      
