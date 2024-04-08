@@ -12,6 +12,8 @@ COPY ./train.py /code/train.py
 
 COPY ./test.py /code/test.py
 
+RUN python /code/train.py
+
 EXPOSE 80
 
 CMD ["uvicorn", "test:app", "--host", "0.0.0.0", "--port", "80"]
