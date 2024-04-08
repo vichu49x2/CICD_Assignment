@@ -2,32 +2,27 @@ name: Train
 
 on:
   pull_request:
-    branches:
-      - 'main'
+    branches: [ "main" ]
 
 jobs:
-  docker:
+
+  build:
+
     runs-on: ubuntu-latest
+
     steps:
-      -
-        name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
-      -
-        name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-      -
-        name: Build docker
-        run:
-          docker build . -t test:v1
-      -
-        name: Login to Docker Hub
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.vichu49x2 }}
-          password: ${{ secrets.dckr_pat_M42oSs-XFJuPIBIHr4j769lYO-E }}
-      -
-        name: Build and push
-        uses: docker/build-push-action@v5
-        with:
-          push: true
-          tags: vichu49x2/cicd_assignment3/test:v1
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+    -
+      name: Login to Docker Hub
+      uses: docker/login-action@v3
+      with:
+        username: ${{ secrets.vichu49x2 }}          
+        password: ${{ secrets.dckr_pat_bW_ru8VNuSfuYPeiHuxZyO5Mabs }}
+    - 
+       name: create image
+       run: 
+        docker build . -t test:v1
+        docker image tag test:v1 vichu49x2/test:v1
+        docker push vichu49x2/test:v1
+      
